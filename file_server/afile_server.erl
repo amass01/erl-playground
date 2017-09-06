@@ -19,7 +19,7 @@ loop(Dir) ->
         {Client, last_dir} ->
             Client ! {self(), file:last_dir(Dir)};
         {Client, {get_file, File}} ->
-            Full = filenane:join(Dir, File),
+            Full = filename:join(Dir, File),
             Client ! {self(), file:read_file(Full)}
     end,
     loop(Dir).
